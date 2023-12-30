@@ -21,7 +21,9 @@ export default function RootLayout({
       <body>
         <Navbar/>
         <Sidebar/>
+        <div className='pl-5 md:pl-64 pt-16 pr-5'>
         {children}
+        </div>
         </body>
     </html>
   )

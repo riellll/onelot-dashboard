@@ -12,7 +12,7 @@ import {
 import Link from 'next/link';
 const Sidebar = () => {
   return (
-    <aside className="fixed top-14 left-0 z-10 w-56 h-screen border-gray-300 border-r transition-transform -translate-x-full sm:translate-x-0">
+    <aside className="fixed top-14 left-0 z-10 w-56 h-screen border-gray-300 border-r transition-transform -translate-x-full md:translate-x-0">
    <div className="h-full px-3 pt-5 py-4 overflow-y-auto  dark:bg-gray-800">
       <ul className="space-y-2 font-medium">
          <li>
@@ -30,7 +30,7 @@ const Sidebar = () => {
           <span className="ms-3">Fleet</span>
           </div>
         </AccordionTrigger>
-        <Link href={'?haha=lol'} >
+        <Link href={'/vehicles'} >
           <AccordionContent className='px-12 py-2 hover:bg-gray-100 rounded-lg text-gray-900 text-md'>
            Vehicles
           </AccordionContent>
