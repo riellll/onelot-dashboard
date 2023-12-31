@@ -69,6 +69,7 @@ const page = ({ searchParams }: Props) => {
         .slice(startIndex, endIndex)
         .map((item) => (
           <Boxcard
+            key={item.licensePlate}
             licensePlate={item.licensePlate}
             companyName={item.companyName}
             category={item.category}

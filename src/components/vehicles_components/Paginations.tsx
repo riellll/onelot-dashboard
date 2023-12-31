@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ChangeEvent } from "react";
+
 type Props = {
   filter: string | undefined;
   list: string | undefined;
@@ -11,9 +11,7 @@ type Props = {
 };
 const Paginations = ({ filter, list, search, totalPage, currentPage }: Props) => {
   const router = useRouter();
-   console.log(totalPage)
-   console.log(list)
-   console.log(search)
+
   const handleChange = (page: number) => {
     if(filter && list && search){
        router.push(`/vehicles?list=${list}&filter=${filter}&search=${search}&page=${page}`)
@@ -34,7 +32,7 @@ const Paginations = ({ filter, list, search, totalPage, currentPage }: Props) =>
    }
    }
 
-   const numberArray: number[] = Array(totalPage).fill(undefined).map((_, index) => index + 1);
+//    const numberArray: number[] = Array(totalPage).fill(undefined).map((_, index) => index + 1);
 
   return (
 
