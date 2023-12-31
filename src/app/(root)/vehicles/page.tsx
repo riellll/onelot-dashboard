@@ -1,5 +1,6 @@
 import Boxcard from '@/components/card/Boxcard'
 import FilterButton from '@/components/vehicles_components/FilterButton';
+import InputSearch from '@/components/vehicles_components/InputSearch';
 import ListBox from '@/components/vehicles_components/ListBox';
 import Link from 'next/link';
 
@@ -21,10 +22,10 @@ const page = ({ params, searchParams }: Props) => {
         </div>
         <div className="flex items-center gap-20 sm:gap-52 lg:gap-96">   
     <div className="relative w-full">
-        <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for vehicles" required/>
+    <InputSearch filter={searchParams.filter} list={searchParams.list}/>
     </div>
     <div className='flex gap-5'>
-    <ListBox filter={searchParams.filter} list={searchParams.list}/>
+    <ListBox filter={searchParams.filter} list={searchParams.list} search={searchParams.search}/>
     </div>
        </div>
     </div>

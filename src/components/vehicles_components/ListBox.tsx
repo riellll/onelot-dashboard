@@ -5,9 +5,13 @@ import { IoListSharp } from "react-icons/io5";
 type Props = {
   filter: string | undefined;
   list: string | undefined;
+  search: string | undefined;
 };
-const ListBox = ({ filter, list }: Props) => {
 
+const ListBox = ({ filter, list, search }: Props) => {
+  const filterLink = () => {
+    
+  }
   return (
     <>
       <Link
