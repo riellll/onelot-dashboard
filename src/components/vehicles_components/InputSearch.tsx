@@ -7,6 +7,7 @@ type Props = {
     filter: string | undefined;
     list: string | undefined;
   };
+  
 const InputSearch = ({filter,list}: Props) => {
     const router = useRouter()
 

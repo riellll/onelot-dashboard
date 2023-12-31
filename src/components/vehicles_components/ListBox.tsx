@@ -9,13 +9,32 @@ type Props = {
 };
 
 const ListBox = ({ filter, list, search }: Props) => {
-  const filterLink = () => {
-    
+  const selectLink = () => {
+    if(filter && search){
+      return (`/vehicles?list=select&filter=${filter}&search=${search}`)
+  }else if(filter){
+      return (`/vehicles?list=select&filter=${filter}`)
+  }else if(search){
+      return (`/vehicles?list=select&search=${search}`)
+  }else{
+      return (`vehicles?list=select`)
+  }
+  }
+  const boxLink = () => {
+    if(filter && search){
+      return (`/vehicles?list=box&filter=${filter}&search=${search}`)
+  }else if(filter){
+      return (`/vehicles?list=box&filter=${filter}`)
+  }else if(search){
+      return (`/vehicles?list=box&search=${search}`)
+  }else{
+      return (`vehicles?list=box`)
+  }
   }
   return (
     <>
       <Link
-        href={filter ? `?list=select&filter=${filter}` : "?list=select"}
+        href={selectLink()}
         className={`${
           list === "select"
             ? "text-gray-900"
@@ -25,7 +44,7 @@ const ListBox = ({ filter, list, search }: Props) => {
         <IoListSharp />
       </Link>
       <Link
-        href={filter ? `?list=box&filter=${filter}` : "?list=box"}
+        href={boxLink()}
         className={`${
           list === "box" ? "text-gray-900" : `${!list ? 'text-gray-900' :'text-gray-300 hover:text-gray-600'}`
         } text-2xl`}
