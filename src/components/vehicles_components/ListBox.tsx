@@ -20,6 +20,7 @@ const ListBox = ({ filter, list, search }: Props) => {
       return (`vehicles?list=select`)
   }
   }
+  
   const boxLink = () => {
     if(filter && search){
       return (`/vehicles?list=box&filter=${filter}&search=${search}`)

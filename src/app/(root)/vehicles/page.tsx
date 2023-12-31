@@ -7,10 +7,9 @@ import { carData } from "@/lib/index";
 import { FaPlus } from "react-icons/fa6";
 import Paginations from "@/components/vehicles_components/Paginations";
 type Props = {
-  params: { search: string };
   searchParams: { [key: string]: string | undefined };
 };
-const page = ({ params, searchParams }: Props) => {
+const page = ({ searchParams }: Props) => {
   const { filter, list, search, page} = searchParams;
   const category = filter === 'car-loan' ? 'Car Loan' : "Cars & Truck";
   const totalPage = Math.ceil(carData.filter(item => item.category === category).length / 8)

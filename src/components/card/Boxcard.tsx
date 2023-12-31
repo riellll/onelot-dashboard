@@ -20,7 +20,7 @@ const Boxcard = ({
   imageUrl
 }: Props) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
+    <div key={licensePlate} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-5">
       <a href="#">
         <img className="rounded-lg w-full h-36" src={imageUrl} alt="" />
       </a>
