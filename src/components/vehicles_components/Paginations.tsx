@@ -52,12 +52,11 @@ const Paginations = ({ filter, list, search, totalPage, currentPage }: Props) =>
       </button>
     </li>
     {Array(totalPage).fill(undefined).map((_, index: number) => (
-    <li>
+    <li key={index}>
       <button onClick={() => {
         if(currentPage === index+1) return
         handleChange(index + 1)
       }}
-      key={index}
       disabled={currentPage === index+1 ? true : false} 
       className={`flex ${currentPage === index+1 ? 'text-blue-600 border border-blue-400 bg-blue-50' : 'text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white hover:text-gray-700 border-gray-300'} items-center justify-center px-3 h-8 leading-tight bg-white border hover:bg-gray-100 dark:bg-gray-800`}>
         {index + 1}
