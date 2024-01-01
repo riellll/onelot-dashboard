@@ -6,6 +6,7 @@ import Link from "next/link";
 import { carData } from "@/lib/index";
 import { FaPlus } from "react-icons/fa6";
 import Paginations from "@/components/vehicles_components/Paginations";
+import TableCard from "@/components/card/TableCard";
 type Props = {
   searchParams: { [key: string]: string | undefined };
 };
@@ -15,6 +16,8 @@ const page = ({ searchParams }: Props) => {
   const totalPage = Math.ceil(carData.filter(item => item.category === category).length / 8)
   const startIndex = (Number(page) - 1 || 0) * 8;
   const endIndex = startIndex + 8;
+
+  
   return (
     <div>
       <div className="flex flex-col gap-5 pt-5">
@@ -54,7 +57,11 @@ const page = ({ searchParams }: Props) => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 sm:gap-5 items-center justify-between min-[320px]:grid-cols-2 min-[320px]:gap-3 min-[320px]:mb-10 min-[320px]:mt-7">
+      {list === 'select' ? 
+      <div>
+     <TableCard carData={carData} category={category} search={search}/>
+     </div> :
+      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${category === 'Cars & Truck' && 'xl:grid-cols-4'} sm:gap-5 items-center justify-between min-[320px]:grid-cols-2 min-[320px]:gap-3 min-[320px]:mb-10 min-[320px]:mt-7`}>
         {carData
         .filter(item => {
           if(search === ''){
@@ -80,7 +87,7 @@ const page = ({ searchParams }: Props) => {
             imageUrl={item.imageUrl}
           />
         ))}
-      </div>
+      </div>}
       <div className="flex justify-between pb-5">
       <span className="text-sm text-gray-700 dark:text-gray-400">
       Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to <span className="font-semibold text-gray-900 dark:text-white">8</span> of <span className="font-semibold text-gray-900 dark:text-white">{carData.length}</span> Entries
