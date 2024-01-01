@@ -2,21 +2,19 @@ import Boxcard from "@/components/card/Boxcard";
 import FilterButton from "@/components/vehicles_components/FilterButton";
 import InputSearch from "@/components/vehicles_components/InputSearch";
 import ListBox from "@/components/vehicles_components/ListBox";
-import Link from "next/link";
-import { carData } from "@/lib/index";
+
 import { FaPlus } from "react-icons/fa6";
 import Paginations from "@/components/vehicles_components/Paginations";
-import TableCard from "@/components/card/TableCard";
+import TableCard from "@/components/vehicles_components/TableCard";
+import { getCarData } from "@/lib/getCarData";
+
 type Props = {
   searchParams: { [key: string]: string | undefined };
 };
 const page = ({ searchParams }: Props) => {
   const { filter, list, search, page} = searchParams;
-  const category = filter === 'car-loan' ? 'Car Loan' : "Cars & Truck";
-  const totalPage = Math.ceil(carData.filter(item => item.category === category).length / 8)
-  const startIndex = (Number(page) - 1 || 0) * 8;
-  const endIndex = startIndex + 8;
 
+  const {carsData,totalItem,totalPage} = getCarData({filter, search, page})
   
   return (
     <div>
@@ -59,22 +57,10 @@ const page = ({ searchParams }: Props) => {
       </div>
       {list === 'select' ? 
       <div>
-     <TableCard carData={carData} category={category} search={search}/>
+     <TableCard carData={carsData}/>
      </div> :
-      <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${category === 'Cars & Truck' && 'xl:grid-cols-4'} sm:gap-5 items-center justify-between min-[320px]:grid-cols-2 min-[320px]:gap-3 min-[320px]:mb-10 min-[320px]:mt-7`}>
-        {carData
-        .filter(item => {
-          if(search === ''){
-              return item
-            }else if(item.licensePlate.toLowerCase().includes(search || '') ||
-            item.companyName.toLowerCase().includes(search || '') ||
-            item.carDetails.toLowerCase().includes(search || '')){
-              return item
-            }
-        })
-        .filter(item => item.category === category)
-        .slice(startIndex, endIndex)
-        .map((item) => (
+      <div className={`grid ${filter === 'car-loan' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'} sm:gap-5 items-center justify-between gap-3 mb-10 mt-7`}>
+        {carsData.map((item) => (
           <Boxcard
             key={item.licensePlate}
             licensePlate={item.licensePlate}
@@ -90,7 +76,7 @@ const page = ({ searchParams }: Props) => {
       </div>}
       <div className="flex justify-between pb-5">
       <span className="text-sm text-gray-700 dark:text-gray-400">
-      Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to <span className="font-semibold text-gray-900 dark:text-white">8</span> of <span className="font-semibold text-gray-900 dark:text-white">{carData.length}</span> Entries
+      Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to <span className="font-semibold text-gray-900 dark:text-white">8</span> of <span className="font-semibold text-gray-900 dark:text-white">{totalItem}</span> Entries
      </span>
         <Paginations
           filter={filter}

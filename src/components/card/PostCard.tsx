@@ -8,7 +8,7 @@ type Props = {
 
 const PostCard = ({imageUrl, content}: Props) => {
   return (
-    <div className="max-w-sm min-h-36 border border-gray-200 rounded-lg shadow bg-white">
+    <div className="max-w-full min-h-full border border-gray-200 rounded-lg shadow bg-white">
   <div className="p-4 border-b">
     <div className="flex items-center justify-between">
       <div className="flex items-center">

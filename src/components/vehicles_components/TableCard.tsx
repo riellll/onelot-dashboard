@@ -1,3 +1,4 @@
+
 interface CarData {
     licensePlate: string;
     companyName: string;
@@ -13,13 +14,11 @@ interface CarData {
   // Example of using the interface with a component
   interface CarProps {
     carData: CarData[];
-    category: string | undefined
-    search: string | undefined
   }
 
-const TableCard: React.FC<CarProps> = ({ carData, category ,search}) => {
+const TableCard: React.FC<CarProps> = ({ carData }) => {
+   
   return (
-    
 <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-10">
     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
@@ -57,15 +56,7 @@ const TableCard: React.FC<CarProps> = ({ carData, category ,search}) => {
             </tr>
         </thead>
         <tbody>
-            {carData.filter(item => {
-          if(search === ''){
-              return item
-            }else if(item.licensePlate.toLowerCase().includes(search || '') ||
-            item.companyName.toLowerCase().includes(search || '') ||
-            item.carDetails.toLowerCase().includes(search || '')){
-              return item
-            }
-        }).filter(item => item.category === category).map(item => (
+            {carData.map(item => (
             <tr key={item.licensePlate} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td className="w-4 p-4">
                     <div className="flex items-center">
