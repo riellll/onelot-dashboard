@@ -54,7 +54,7 @@ const page = ({ searchParams }: Props) => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 sm:gap-5 items-center justify-between min-[320px]:grid-cols-2 min-[320px]:gap-3 min-[320px]:mb-10 min-[320px]:mt-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 sm:gap-5 items-center justify-between min-[320px]:grid-cols-2 min-[320px]:gap-3 min-[320px]:mb-10 min-[320px]:mt-7">
         {carData
         .filter(item => {
           if(search === ''){
@@ -81,7 +81,7 @@ const page = ({ searchParams }: Props) => {
           />
         ))}
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between pb-5">
       <span className="text-sm text-gray-700 dark:text-gray-400">
       Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to <span className="font-semibold text-gray-900 dark:text-white">8</span> of <span className="font-semibold text-gray-900 dark:text-white">{carData.length}</span> Entries
      </span>

@@ -43,7 +43,7 @@ const Sidebar = () => {
           <span className="ms-3">Marketing</span>
           </div>
         </AccordionTrigger>
-        <Link href={'?haha=lohhl'} >
+        <Link href={'/post'} >
           <AccordionContent className='px-12 py-2 font-medium hover:bg-gray-100 rounded-lg text-gray-900 text-md'>
            Posts
           </AccordionContent>
