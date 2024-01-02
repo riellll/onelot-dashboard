@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
   filter: string | undefined;
@@ -11,6 +11,9 @@ type Props = {
 };
 const Paginations = ({ filter, list, search, totalPage, currentPage }: Props) => {
   const router = useRouter();
+
+  const pathname = usePathname()
+  console.log(pathname)
 
   const handleChange = (page: number) => {
     if(filter && list && search){
@@ -28,7 +31,7 @@ const Paginations = ({ filter, list, search, totalPage, currentPage }: Props) =>
    }else if(list){
           router.push(`/vehicles?list=${list}&page=${page}`)
    }else{
-          router.push(`/vehicles?page=${page}`)
+          router.push(`${pathname}?page=${page}`)
    }
    }
 

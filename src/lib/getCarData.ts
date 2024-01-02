@@ -1,4 +1,4 @@
-import { carData } from "."
+import { carData,postData } from "."
 type Props = {
     filter: string | undefined;
     search: string | undefined;
@@ -24,4 +24,15 @@ export const getCarData = ({filter, search, page}: Props) => {
     .slice(startIndex, endIndex)
 
     return {carsData,totalItem,totalPage}
+}
+
+export const getPostData = ({page}: Props) => {
+
+  const startIndex = (Number(page) - 1 || 0) * 6;
+  const endIndex = startIndex + 6;
+  const totalItem = postData.length
+  const totalPage = Math.ceil(postData.length / 6)
+  const postsData = postData.slice(startIndex, endIndex)
+
+  return {postsData,totalItem,totalPage}
 }
