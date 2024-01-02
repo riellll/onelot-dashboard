@@ -1,10 +1,18 @@
+import { options } from '@/app/api/auth/[...nextauth]/options';
 import RegisterForm from '@/components/auth_components/RegisterForm';
+import { getUserData } from '@/lib/getuser/fetchUser';
+import { getServerSession } from 'next-auth';
 import Link from 'next/link'
+import { redirect } from 'next/navigation';
 import React from 'react'
 import { BiLogoMicrosoft } from "react-icons/bi";
 
 
-const page = () => {
+const page = async () => {
+  const userData = await getUserData();
+  const session = await getServerSession(options);
+  if(session) redirect('/')
+  const userEmail: string[] = userData.map(({ email }) => email);
   return (
     <main className="flex justify-center items-center h-screen bg-gray-100">
     <div
@@ -19,7 +27,7 @@ const page = () => {
         <h3 className="tracking-tight text-2xl font-semibold text-gray-900 dark:text-white">Create Account</h3>
         <p className="text-sm text-gray-600 dark:text-gray-200">Join our community!</p>
       </div>
-     <RegisterForm/>
+     <RegisterForm user={userEmail}/>
     </div>
   </main>
   )

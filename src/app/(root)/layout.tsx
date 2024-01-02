@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import '../globals.css'
 import Navbar from '@/components/shared/Navbar'
 import Sidebar from '@/components/shared/Sidebar'
+import Provider from '@/components/auth_components/Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Provider>
         <Navbar/>
         <Sidebar/>
         <div className='pl-5 md:pl-64 pt-16 pr-5 max-w-screen-2xl'>
         {children}
         </div>
+        </Provider>
         </body>
     </html>
   )

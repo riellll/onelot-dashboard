@@ -7,15 +7,23 @@ import { FaPlus } from "react-icons/fa6";
 import Paginations from "@/components/vehicles_components/Paginations";
 import TableCard from "@/components/vehicles_components/TableCard";
 import { getCarData } from "@/lib/getCarData";
+import { getServerSession } from "next-auth";
+import { options } from "@/app/api/auth/[...nextauth]/options";
+import { redirect } from "next/navigation";
 
 type Props = {
   searchParams: { [key: string]: string | undefined };
 };
-const page = ({ searchParams }: Props) => {
-  const { filter, list, search, page} = searchParams;
+const page = async ({ searchParams }: Props) => {
+  const { filter, list, search, page } = searchParams;
+  const { carsData, totalItem, totalPage } = getCarData({
+    filter,
+    search,
+    page,
+  });
+  const session = await getServerSession(options);
+  if (!session) redirect("/login");
 
-  const {carsData,totalItem,totalPage} = getCarData({filter, search, page})
-  
   return (
     <div>
       <div className="flex flex-col gap-5 pt-5">
@@ -41,43 +49,52 @@ const page = ({ searchParams }: Props) => {
         </div>
         <div className="flex items-center gap-20 sm:gap-52 lg:gap-96">
           <div className="relative w-full">
-            <InputSearch
-              filter={filter}
-              list={list}
-            />
+            <InputSearch filter={filter} list={list} />
           </div>
           <div className="flex gap-5">
-            <ListBox
-              filter={filter}
-              list={list}
-              search={search}
-            />
+            <ListBox filter={filter} list={list} search={search} />
           </div>
         </div>
       </div>
-      {list === 'select' ? 
-      <div>
-     <TableCard carData={carsData}/>
-     </div> :
-      <div className={`grid ${filter === 'car-loan' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'} sm:gap-5 items-center justify-between gap-3 mb-10 mt-7`}>
-        {carsData.map((item) => (
-          <Boxcard
-            key={item.licensePlate}
-            licensePlate={item.licensePlate}
-            companyName={item.companyName}
-            category={item.category}
-            carDetails={item.carDetails}
-            model={item.model}
-            mileage={item.mileage}
-            buyingPrice={item.buyingPrice}
-            imageUrl={item.imageUrl}
-          />
-        ))}
-      </div>}
+      {list === "select" ? (
+        <div>
+          <TableCard carData={carsData} />
+        </div>
+      ) : (
+        <div
+          className={`grid ${
+            filter === "car-loan"
+              ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+              : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+          } sm:gap-5 items-center justify-between gap-3 mb-10 mt-7`}
+        >
+          {carsData.map((item) => (
+            <Boxcard
+              key={item.licensePlate}
+              licensePlate={item.licensePlate}
+              companyName={item.companyName}
+              category={item.category}
+              carDetails={item.carDetails}
+              model={item.model}
+              mileage={item.mileage}
+              buyingPrice={item.buyingPrice}
+              imageUrl={item.imageUrl}
+            />
+          ))}
+        </div>
+      )}
       <div className="flex justify-between pb-5">
-      <span className="text-sm text-gray-700 dark:text-gray-400">
-      Showing <span className="font-semibold text-gray-900 dark:text-white">1</span> to <span className="font-semibold text-gray-900 dark:text-white">8</span> of <span className="font-semibold text-gray-900 dark:text-white">{totalItem}</span> Entries
-     </span>
+        <span className="text-sm text-gray-700 dark:text-gray-400">
+          Showing{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">1</span>{" "}
+          to{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">8</span>{" "}
+          of{" "}
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {totalItem}
+          </span>{" "}
+          Entries
+        </span>
         <Paginations
           filter={filter}
           list={list}

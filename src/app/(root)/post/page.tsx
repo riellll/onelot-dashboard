@@ -1,7 +1,12 @@
+import { options } from '@/app/api/auth/[...nextauth]/options';
 import PostCard from '@/components/card/PostCard'
 import {postData} from '@/lib/index'
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
-const page = () => {
+const page = async () => {
+  const session = await getServerSession(options);
+  if(!session) redirect('/login')
   return (
     <div>
    <div>

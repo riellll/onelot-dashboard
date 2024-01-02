@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import React from 'react'
 import { BiLogoMicrosoft } from "react-icons/bi";
-const Navbar = () => {
+import ProfileLogo from './ProfileLogo';
+import { getServerSession } from 'next-auth';
+import { options } from '@/app/api/auth/[...nextauth]/options';
+const Navbar = async () => {
+  const session = await getServerSession(options);
+  // console.log(session)
+
+
   return (
     
 <nav className="fixed top-0 start-0 w-full z-30 bg-white border-gray-300 border-b dark:bg-gray-900">
@@ -12,17 +19,12 @@ const Navbar = () => {
   </Link>
   <div className="flex items-center gap-4">
     
-  <button data-collapse-toggle="navbar-user" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
-        <span className="sr-only">Open main menu</span>
-        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-      <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-        <span className="sr-only">Open user menu</span>
-        <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo"/>
-      </button>
-
+    {session ? <ProfileLogo/> : <Link href={'/login'} className="text-white bg-violet-700 hover:bg-violet-800  font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center dark:bg-violet-600 dark:hover:bg-violet-700">
+    Sign in
+    <svg className="rtl:rotate-180 w-3 h-3 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/ svg" fill="none" viewBox="0 0 14 10">
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"     d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    </svg>
+    </Link>}
   </div>
   </div>
 </nav>

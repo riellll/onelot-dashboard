@@ -1,11 +1,19 @@
 'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import { useForm, type FieldValues } from "react-hook-form";
+import Loading from '../shared/Loading';
+interface Props {
+  user: string[] | undefined
+}
 
-const RegisterForm = () => {
+const RegisterForm = ({user}: Props) => {
+
+  const router = useRouter()
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors, isSubmitting },
         reset,
         getValues,
@@ -15,8 +23,30 @@ const RegisterForm = () => {
       const onSubmit = async (data: FieldValues) => {
         // TODO: submit to server
         // ...
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+        const { firstname, lastname, email, password } = data
+        if(user?.includes(email)) {
+          setError("email", {
+            type: "manual",
+            message: "Email is already taken!",
+          })
+          return
+        }
+        try {
+          const response = await fetch("/api/register", {
+            method: "POST",
+            body: JSON.stringify({
+              firstname, lastname, email, password
+            }),
+          });
+
+          if (response.ok) {
+            router.push("/login");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
+        
         reset();
       };
 
@@ -131,7 +161,7 @@ const RegisterForm = () => {
       disabled={isSubmitting}
       type="submit"
       className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white">
-        Create Account
+        {isSubmitting ? <Loading/> : 'Create Account'}
       </button>
       <p>Already have account? Login <Link href={'/login'} className='text-blue-600 hover:text-blue-400'>here</Link></p>
     </div>
