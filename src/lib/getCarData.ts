@@ -4,6 +4,7 @@ type Props = {
     search: string | undefined;
     page: string | undefined;
   }
+  
 export const getCarData = ({filter, search, page}: Props) => {
     const category = filter === 'car-loan' ? 'Car Loan' : "Cars & Truck";
     const startIndex = (Number(page) - 1 || 0) * 8;
@@ -26,7 +27,7 @@ export const getCarData = ({filter, search, page}: Props) => {
     return {carsData,totalItem,totalPage}
 }
 
-export const getPostData = ({page}: Props) => {
+export const getPostData = ({page}:{page: string | undefined}) => {
 
   const startIndex = (Number(page) - 1 || 0) * 6;
   const endIndex = startIndex + 6;
