@@ -1,17 +1,20 @@
 'use client'
-import { barData } from '@/lib'
-import React from 'react'
+import { carloanData } from '@/lib'
+import { Chart as ChartJS, registerables } from 'chart.js';
+import { Chart } from 'react-chartjs-2'
+ChartJS.register(...registerables);
 import { Bar, Doughnut, Line } from "react-chartjs-2";
+
 const Barchart = () => {
   return (
-    <div className="dataCard customerCard">
+    <div className="mt-10">
     <Bar
       data={{
-        labels: barData.map((data) => data.label),
+        labels: carloanData.map((data) => data.licensePlate),
         datasets: [
           {
-            label: "Count",
-            data: barData.map((data) => data.value),
+            label: "Buying Price",
+            data: carloanData.map((data) => data.buyingPrice),
             backgroundColor: [
               "rgba(43, 63, 229, 0.8)",
               "rgba(250, 192, 19, 0.8)",

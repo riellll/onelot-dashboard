@@ -690,78 +690,64 @@ export const carloanData = [
 
 export const lineData = [
   {
-    "label": "Jan",
+    "company": "Volkswagen",
     "revenue": 64854,
     "cost": 32652
   },
   {
-    "label": "Feb",
+    "company": "Acura",
     "revenue": 54628,
     "cost": 42393
   },
   {
-    "label": "Mar",
+    "company": "Kia",
     "revenue": 117238,
     "cost": 50262
   },
   {
-    "label": "Apr",
+    "company": "Infiniti",
     "revenue": 82830,
     "cost": 64731
   },
   {
-    "label": "May",
+    "company": "Cadillac",
     "revenue": 91208,
     "cost": 41893
   },
   {
-    "label": "Jun",
+    "company": "Mitsubishi",
     "revenue": 103609,
     "cost": 83809
   },
   {
-    "label": "Jul",
+    "company": "Genesis",
     "revenue": 90974,
     "cost": 44772
   },
   {
-    "label": "Aug",
+    "company": "Jaguar",
     "revenue": 82919,
     "cost": 37590
   },
   {
-    "label": "Sep",
+    "company": "Buick",
     "revenue": 62407,
     "cost": 43349
   },
   {
-    "label": "Oct",
+    "company": "Chrysler",
     "revenue": 82528,
     "cost": 45324
   },
   {
-    "label": "Nov",
+    "company": "Chevrolet",
     "revenue": 56979,
     "cost": 47978
   },
   {
-    "label": "Dec",
+    "company": "Honda",
     "revenue": 87436,
     "cost": 39175
   }
 ]
 
-export const barData = [
-  {
-    "label": "Ads",
-    "value": 32
-  },
-  {
-    "label": "Subscriptions",
-    "value": 45
-  },
-  {
-    "label": "Sponsorships",
-    "value": 23
-  }
-]

@@ -39,7 +39,8 @@ const page = async () => {
       </button>
       </div>
       </div>
-
+      <Barchart/>
+      <Linechart/>
     </div>
   );
 };

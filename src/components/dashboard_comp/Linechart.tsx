@@ -1,16 +1,18 @@
 'use client'
 
 import { lineData } from "@/lib";
-import { Chart as ChartJS, defaults } from "chart.js/auto";
+import { Chart as ChartJS, registerables } from 'chart.js';
+import { Chart } from 'react-chartjs-2'
+ChartJS.register(...registerables);
 import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 
 const Linechart = () => {
   return (
-    <div className="">
+    <div className="mt-10">
     <Line
       data={{
-        labels: lineData.map((data) => data.label),
+        labels: lineData.map((data) => data.company),
         datasets: [
           {
             label: "Revenue",
