@@ -9,9 +9,10 @@ import { BiLogoMicrosoft } from "react-icons/bi";
 
 
 const page = async () => {
-  const userData = await getUserData();
   const session = await getServerSession(options);
   if(session) redirect('/')
+  const userData = await getUserData();
+console.log(userData)
   const userEmail: string[] = userData.map(({ email }) => email);
   return (
     <main className="flex justify-center items-center h-screen bg-gray-100">
