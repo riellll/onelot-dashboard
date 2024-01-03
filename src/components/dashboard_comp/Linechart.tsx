@@ -9,7 +9,8 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 const Linechart = () => {
   return (
-    <div className="w-full mt-10">
+    <div className="w-full mt-10 p-5 bg-white border border-gray-200 rounded-lg shadow">
+      <p className="text-2xl font-bold pb-5">Financial Performance&#58; Revenue vs&#46; Cost Analysis</p>
     <Line
       data={{
         labels: lineData.map((data) => data.company),

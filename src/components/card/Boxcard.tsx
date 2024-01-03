@@ -27,7 +27,7 @@ const Boxcard = ({
         <img className="rounded-lg w-full h-36" src={imageUrl} alt="" />
       </a>
       <div className="space-y-4 pt-3">
-        <span className="bg-purple-100 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">
+        <span className={`${category === 'Car Loan' ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300" : "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300"} text-sm font-medium me-2 px-2.5 py-0.5 rounded`}>
           {category}
         </span>
         <a href="#">

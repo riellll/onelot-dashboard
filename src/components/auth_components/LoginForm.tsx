@@ -82,10 +82,10 @@ const LoginForm = ({err}: Props) => {
         </div>
         <button
         disabled={isSubmitting}
-        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white">
+        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-violet-500 hover:bg-violet-600 text-white">
           {isSubmitting ? <Loading/> : 'Login'}
         </button>
-        <Link href={'/register'} className='text-blue-600 hover:text-blue-400'>Create Account &#8594;</Link>
+        <Link href={'/register'} className='text-violet-600 hover:text-violet-400'>Create Account &#8594;</Link>
       </div>
     </form>
     </>

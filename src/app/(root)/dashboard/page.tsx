@@ -20,14 +20,14 @@ const page = async () => {
       </p>
 
 
-      <div className="flex justify-between">
+      <div className="flex gap-5 flex-wrap justify-between">
       <h1 className="text-lg font-extrabold leading-none tracking-tight text-gray-900 md:text-xl lg:text-3xl dark:text-white">
         {session?.user?.name}
       </h1>
       <div className='flex gap-3'>
-      <button type="button" className="text-white space-x-4 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-1 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700">
+      <button type="button" className="text-white space-x-4 bg-violet-700 hover:bg-violet-800 font-medium rounded-lg text-sm px-5 py-1 text-center inline-flex items-center me-2 dark:bg-violet-600 dark:hover:bg-violet-700">
       <FaUpload />
-      <span>Upload Product </span>
+      <span className="hidden sm:block">Upload Product </span>
       </button> 
       
        <div className="relative">
@@ -39,7 +39,7 @@ const page = async () => {
         <input type="search" id="default-search" className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required/>
       </div>
       
-      <button type="button" className="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white font-medium rounded-full text-sm p-3 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500">
+      <button type="button" className="text-violet-700 border border-violet-700 hover:bg-violet-700 hover:text-white font-medium rounded-full text-sm p-3 text-center inline-flex items-center dark:border-violet-500 dark:text-violet-500 dark:hover:text-white dark:hover:bg-violet-500">
       <span><FaBell /></span>
       </button>
       </div>
@@ -48,11 +48,10 @@ const page = async () => {
 
       <div className="flex flex-col-reverse lg:flex-row gap-5">
       <Linechart/>
-      <div className="flex lg:flex-col w-96 lg:space-y-10 mt-14">
+      <div className="flex lg:flex-col flext-wrap sm:w-96 lg:space-y-5 mt-10">
       <Smallcard/>
       </div>
       </div>
-
 
       <Barchart/>
       <TableCard carData={carData}/>

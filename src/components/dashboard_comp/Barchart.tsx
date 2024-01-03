@@ -7,7 +7,8 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 const Barchart = () => {
   return (
-    <div className="w-full mt-10">
+    <div className="w-full mt-10 p-5 bg-white border border-gray-200 rounded-lg shadow">
+      <p className="text-2xl font-bold pb-5">Analyzing Buying Prices Across Car License Plates</p>
     <Bar
       data={{
         labels: carloanData.map((data) => data.licensePlate),
