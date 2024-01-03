@@ -25,7 +25,7 @@ const page = async ({ searchParams }: Props) => {
   if (!session) redirect("/login");
 
   return (
-    <div>
+    <div className="max-w-screen-2xl">
       <div className="flex flex-col gap-5 pt-5">
         <p>Vehicles</p>
         <div className="flex justify-between">
