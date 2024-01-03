@@ -37,8 +37,7 @@ const Mobile_Sidebar = () => {
      </Link>
      </SheetTitle>
       <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
+      We enable dealers to buy more cars through our inventory loan solutions and sell cars more efficiently through our Dealership Management System with its inventory management&#44; marketing solutions and market insights
       </SheetDescription>
     </SheetHeader>
     <div className="h-full pt-5 py-4 overflow-y-auto  dark:bg-gray-800">
