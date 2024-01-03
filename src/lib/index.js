@@ -430,7 +430,6 @@ export const carData = [
   },
 ];
 
-
 export const carloanData = [
   {
     licensePlate: "ABC987",

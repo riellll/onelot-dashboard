@@ -14,6 +14,9 @@ import { redirect } from "next/navigation";
 type Props = {
   searchParams: { [key: string]: string | undefined };
 };
+
+
+
 const page = async ({ searchParams }: Props) => {
   const { filter, list, search, page } = searchParams;
   const { carsData, totalItem, totalPage } = getCarData({

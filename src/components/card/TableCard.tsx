@@ -10,13 +10,13 @@ interface CarData {
     buyingPrice: number;
     imageUrl: string;
   }
-  
-  // Example of using the interface with a component
+
+
   interface CarProps {
     carData: CarData[];
   }
 
-const TableCard: React.FC<CarProps> = ({ carData }) => {
+const TableCard = ({ carData }: CarProps) => {
    
   return (
 <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-10">
