@@ -5,6 +5,9 @@ import { FaUpload } from "react-icons/fa6";
 import { FaBell } from "react-icons/fa";
 import Linechart from "@/components/dashboard_comp/Linechart";
 import Barchart from "@/components/dashboard_comp/Barchart";
+import { carData } from "@/lib";
+import TableCard from "@/components/card/TableCard";
+import Smallcard from "@/components/dashboard_comp/Smallcard";
 
 
 const page = async () => {
@@ -39,8 +42,14 @@ const page = async () => {
       </button>
       </div>
       </div>
-      <Barchart/>
+      <div className="flex gap-5">
       <Linechart/>
+      <div className="w-96 space-y-10 mt-14">
+      <Smallcard/>
+      </div>
+      </div>
+      <Barchart/>
+      <TableCard carData={carData}/>
     </div>
   );
 };

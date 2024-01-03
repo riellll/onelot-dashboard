@@ -5,7 +5,7 @@ import ListBox from "@/components/vehicles_components/ListBox";
 
 import { FaPlus } from "react-icons/fa6";
 import Paginations from "@/components/vehicles_components/Paginations";
-import TableCard from "@/components/vehicles_components/TableCard";
+import TableCard from "@/components/card/TableCard";
 import { getCarData } from "@/lib/getCarData";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";

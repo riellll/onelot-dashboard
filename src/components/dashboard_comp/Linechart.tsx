@@ -9,7 +9,7 @@ import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 const Linechart = () => {
   return (
-    <div className="mt-10">
+    <div className="w-full mt-10">
     <Line
       data={{
         labels: lineData.map((data) => data.company),
